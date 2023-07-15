@@ -9,7 +9,7 @@
 # /etc/relayd
 📝 Here the [man](https://man.openbsd.org/relayd.conf) for relayd configuration file.
 
-* My file here relayd.conf(https://github.com/seheyah/etc/blob/main/relays.conf)
+* My file here [relayd.conf](https://github.com/seheyah/etc/blob/main/relays.conf)
 A very simple relayd.conf file where all request coming for external not requesting strictly your domain name like example.xyz but the ip for example are forwarding to <sorry> where <sorry> equal httpforever(http://httpforever.com) in this example.
 
 🐡 Have fun!
