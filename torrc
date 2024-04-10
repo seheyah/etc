@@ -1,19 +1,40 @@
-ExitPolicy reject 0.0.0.0/8:*
-ExitPolicy reject 169.254.0.0/16:*
-ExitPolicy reject 127.0.0.0/8:*
-ExitPolicy reject 192.168.0.0/16:*
-ExitPolicy reject 10.0.0.0/8:*
-ExitPolicy reject 172.16.0.0/12:*
-ExitPolicy reject 142.93.17.76:*
-ExitPolicy reject 192.99.238.35:*
-ExitPolicy reject *:25
-ExitPolicy reject *:119
-ExitPolicy reject *:135-139
-ExitPolicy reject *:445
-ExitPolicy reject *:563
-ExitPolicy reject *:1214
-ExitPolicy reject *:4661-4666
-ExitPolicy reject *:6346-6429
-ExitPolicy reject *:6699
-ExitPolicy reject *:6881-6999
-ExitPolicy accept *:*
+####### /etc/tor/torrc
+
+## Logs
+Log notice file /var/log/tor/notices.log
+Log warn file /var/log/tor/warnings.log
+Log err file /var/log/tor/errors.log
+
+## OPTIONS
+DataDirectory /var/tor
+MaxMemInQueues 1024 MB
+MetricsPort 127.0.0.1:9035
+MetricsPortPolicy accept 127.0.0.1
+RelayBandwidthRate 2048 KBytes
+RelayBandwidthBurst 3096 KBytes
+RunAsDaemon 1
+User _tor
+
+## Hidden services
+HiddenServiceDir /var/tor/hidden_service/
+HiddenServiceEnableIntroDoSDefense 1
+HiddenServicePort 80 127.0.0.1:80
+#HiddenServicePoWDefensesEnabled 1
+#HiddenServiceAllowUnknownPorts
+HiddenServiceVersion 3
+
+## Policies
+ExitPolicy reject *:*
+ExitPolicy reject6 *:*
+
+### Relays
+#Address noname.example.com
+#BridgeDistribution none
+#BridgeRelay 1
+ContactInfo 911
+ExitRelay 0
+#IPv6Exit 1
+ORPort 443 
+SOCKSPort 0
+
+####### END
